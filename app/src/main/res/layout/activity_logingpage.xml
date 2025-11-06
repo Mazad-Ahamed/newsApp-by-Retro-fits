@@ -3,6 +3,7 @@
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:id="@+id/main"
+    android:background="@color/black"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:padding="24dp"
@@ -15,7 +16,7 @@
         android:layout_marginTop="68dp"
         android:text="Login "
         android:textAlignment="center"
-        android:textColor="@color/black"
+        android:textColor="@color/white"
         android:textSize="38.sp"
         android:textStyle="bold"
         app:layout_constraintEnd_toEndOf="parent"
@@ -39,6 +40,7 @@
 
         <com.google.android.material.textfield.TextInputEditText
             android:id="@+id/etEmail"
+            android:textColor="@color/white"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:inputType="textEmailAddress" />
@@ -49,8 +51,9 @@
         android:layout_width="0dp"
         android:layout_height="wrap_content"
         android:layout_marginTop="24dp"
-        android:hint="Email"
+        android:hint="password"
         app:boxBackgroundMode="outline"
+        app:errorTextColor="@color/white"
         app:boxStrokeColor="@color/black"
         app:endIconMode="password_toggle"
         app:layout_constraintEnd_toEndOf="parent"
@@ -60,6 +63,7 @@
 
         <com.google.android.material.textfield.TextInputEditText
             android:id="@+id/etPassword"
+            android:textColor="@color/white"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:inputType="textEmailAddress" />
@@ -84,6 +88,7 @@
         android:layout_marginStart="68dp"
         android:layout_marginTop="64dp"
         android:paddingTop="16dp"
+        android:textColor="@color/white"
         android:text="Don't have an account?"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@id/btnLogin" />
@@ -96,7 +101,7 @@
         android:layout_marginTop="64dp"
         android:paddingTop="16dp"
         android:text="Register"
-        android:textColor="@color/black"
+        android:textColor="#00B8D4"
         android:textStyle="bold"
         app:layout_constraintStart_toEndOf="@id/tvResult"
         app:layout_constraintTop_toBottomOf="@id/btnLogin" />

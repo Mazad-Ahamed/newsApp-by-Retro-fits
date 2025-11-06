@@ -23,7 +23,7 @@ class MainActivity : AppCompatActivity() {
         super.onCreate(savedInstanceState)
         binding = ActivityMainBinding.inflate(layoutInflater)
         setContentView(binding.root)
-
+        binding.recyclerView2.layoutManager= LinearLayoutManager(this, LinearLayoutManager.VERTICAL,false)
         binding.recyclerView.layoutManager = LinearLayoutManager(this, LinearLayoutManager.HORIZONTAL,false)
 
         fetchNews()
@@ -35,6 +35,17 @@ class MainActivity : AppCompatActivity() {
                 if (response.isSuccessful && response.body() != null) {
                     val newsList = response.body()!!.articles
                     binding.recyclerView.adapter = NewsAdapter(newsList){selectedArticle ->
+                        val intent =
+                            Intent(this@MainActivity, FullNewsActivity::class.java)
+                        intent.putExtra("NewsData", selectedArticle)
+                        startActivity(intent)
+                    }
+                } else {
+                    Toast.makeText(this@MainActivity, "No data", Toast.LENGTH_SHORT).show()
+                }
+                if (response.isSuccessful && response.body() != null) {
+                    val newsList = response.body()!!.articles
+                    binding.recyclerView2.adapter = NewsTwoAdapter(newsList){selectedArticle ->
                         val intent =
                             Intent(this@MainActivity, FullNewsActivity::class.java)
                         intent.putExtra("NewsData", selectedArticle)
