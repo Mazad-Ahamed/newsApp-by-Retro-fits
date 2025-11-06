@@ -14,6 +14,12 @@
         android:supportsRtl="true"
         android:theme="@style/Theme.NewsReader">
         <activity
+            android:name=".FullNewsActivity"
+            android:exported="false" />
+        <activity
+            android:name=".fullViewNews"
+            android:exported="false" />
+        <activity
             android:name=".Regiter"
             android:exported="false" />
         <activity

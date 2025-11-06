@@ -7,7 +7,11 @@ import com.bumptech.glide.Glide
 import com.example.newsreader.Data.Article
 import com.example.newsreader.databinding.ItemArticleBinding
 
-class NewsAdapter (private val articles: List<Article>) :
+class NewsAdapter (private val articles: List<Article>,
+
+private val onItemClick : (Article) -> Unit
+
+) :
     RecyclerView.Adapter<NewsAdapter.NewsViewHolder>() {
 
     inner class NewsViewHolder(val binding: ItemArticleBinding) :
@@ -23,6 +27,10 @@ class NewsAdapter (private val articles: List<Article>) :
         holder.binding.tvTitle.text = article.title
         holder.binding.tvDescription.text = article.description ?: ""
         Glide.with(holder.itemView).load(article.image).into(holder.binding.ivNews)
+
+        holder.itemView.setOnClickListener {
+            onItemClick(article)
+        }
     }
 
     override fun getItemCount() = articles.size

@@ -1,9 +1,11 @@
 package com.example.newsreader.Data
 
+import java.io.Serializable
+
 data class NewsResponse(
     val totalArticles: Int,
     val articles: List<Article>
-)
+) : Serializable
 
 data class Article(
     val title: String,
@@ -12,10 +14,10 @@ data class Article(
     val image: String?,
     val publishedAt: String,
     val source: Source
-)
+) : Serializable
 
 data class Source(
     val name: String,
     val url: String
-)
+) : Serializable
 

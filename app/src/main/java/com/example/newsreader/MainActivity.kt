@@ -24,7 +24,7 @@ class MainActivity : AppCompatActivity() {
         binding = ActivityMainBinding.inflate(layoutInflater)
         setContentView(binding.root)
 
-        binding.recyclerView.layoutManager = LinearLayoutManager(this)
+        binding.recyclerView.layoutManager = LinearLayoutManager(this, LinearLayoutManager.HORIZONTAL,false)
 
         fetchNews()
     }
@@ -34,7 +34,12 @@ class MainActivity : AppCompatActivity() {
             override fun onResponse(call: Call<NewsResponse>, response: Response<NewsResponse>) {
                 if (response.isSuccessful && response.body() != null) {
                     val newsList = response.body()!!.articles
-                    binding.recyclerView.adapter = NewsAdapter(newsList)
+                    binding.recyclerView.adapter = NewsAdapter(newsList){selectedArticle ->
+                        val intent =
+                            Intent(this@MainActivity, FullNewsActivity::class.java)
+                        intent.putExtra("NewsData", selectedArticle)
+                        startActivity(intent)
+                    }
                 } else {
                     Toast.makeText(this@MainActivity, "No data", Toast.LENGTH_SHORT).show()
                 }
